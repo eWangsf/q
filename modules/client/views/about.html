@@ -1,0 +1,20 @@
+<div class="container home" ng-controller="HomeController">
+    <ng-include src="'modules/client/views/header.html'">
+    </ng-include>
+    
+    <div class="row about" ng-controller="AboutController">
+        <h2 class="about-title">关于力雅</h2>
+        <p class="about-content">
+        {{info.intro}}
+        </p>
+        <p class="about-img">
+            <img src="{{info.aboutusImg}}" alt="">
+        </p>
+
+    </div>
+    
+    
+    <ng-include src="'modules/client/views/footer.html'">
+    </ng-include>
+
+</div>
