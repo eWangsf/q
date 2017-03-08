@@ -1,0 +1,91 @@
+<div class="container train-doc" ng-controller="TrainController">
+    <ng-include src="'modules/client/views/header.html'">
+    </ng-include>
+
+    <div class="row numcontainer flex">
+        <div class="sta flex flex-item-1 justify-content-center">
+            <div class="sta-text">
+                <h4>目前已成功策划</h4>
+                <h4>个体育活动</h4>
+            </div>
+            <div class="sta-num">
+                <ul class="digits">
+                    <li class="digit">1</li>
+                    <li class="digit">5</li>
+                    <li class="digit">6</li>
+                    <li class="digit">4</li>
+                    <li class="digit">1</li>
+                </ul>
+            </div>
+        </div>
+        <div class="plane-erweima">
+            <img class="img erweima" src="/images/erweima.jpg" alt="">
+        </div>
+    </div>
+
+    <h4 class="select-title">请选择活动类型</h4>
+    <hr class="sub-hr">
+
+    <div class="row trains fixture">
+        <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="type in types">
+            <div class="item">
+                <a href="/train/train?type={{type.type}}">
+                    <!-- <i class="icon icon-badminton"></i> -->
+                    <span class="name">{{type.name}}</span>
+                </a>
+            </div>
+        </div>
+        <!-- <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="item">
+                <a href="/train/train?type=badminton">
+                    <i class="icon icon-badminton"></i>
+                    <span class="name">羽毛球</span>
+                </a>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="item">
+                <a href="/train/train?type=tennis">
+                    <i class="icon icon-tennis"></i>
+                    <span class="name">网球</span>
+                </a>            
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="item">
+                <a href="/train/train?type=football">
+                    <i class="icon icon-football"></i>
+                    <span class="name">足球</span>
+                </a>            
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="item">
+                <a href="/train/train?type=swimming">
+                    <i class="icon icon-swimming"></i>
+                    <span class="name">游泳</span>
+                </a>            
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="item">
+                <a href="/train/train?type=basketball">
+                    <i class="icon icon-basketball"></i>
+                    <span class="name">篮球</span>
+                </a>            
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="item">
+                <a href="/train/train?type=score">
+                    <i class="icon icon-score"></i>
+                    <span class="name">中考体育</span>
+                </a>            
+            </div>
+        </div> -->
+    </div>
+
+    <ng-include src="'modules/client/views/footer.html'">
+    </ng-include>
+    
+</div>

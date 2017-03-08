@@ -1,0 +1,1028 @@
+<div class="container admin-home" ng-controller="adminHomeController">
+    <ul class="admin-list">
+        <li><a href="#carousels">轮播图片设置</a></li>
+        <li><a href="#comments">评论设置</a></li>
+        <li><a href="#planetypes">活动类型设置</a></li>
+        <li><a href="#planes">活动设置</a></li>
+        <li><a href="#operations">场馆设置</a></li>
+        <li><a href="#operationtypes">场馆类型设置</a></li>
+        <li><a href="#trains">培训设置</a></li>
+        <li><a href="#traintypes">培训类型设置</a></li>
+        <li><a href="#aboutus">公司信息设置</a></li>
+    </ul>
+    <span id="toTop" title="转到顶部" class="glyphicon glyphicon-arrow-up" ng-click="toTop()"></span>
+    
+    <!-- <h2 id="carousels">轮播图片设置</h2>
+    <div class="row carsousels">
+        <div class="col-md-3 carousel" ng-repeat="carousel in data.carousels">
+            <div class="thumbnail">
+                <img src="{{carousel.imageurl}}" alt="">
+                <div class="caption">
+                    <h3>{{carousel.name}}</h3>
+                    <p>
+                        <a href="#" class="btn btn-default" role="button" ng-click="modCarouselBtn(carousel)">
+                            修改
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    <h2 id="comments">评论设置<button class="btn btn-default add" ng-click="addCommentBtn()">新增评论</button></h2>
+    <div class="row comments">
+        <div class="col-md-3 comment" ng-repeat="comment in data.comments">
+            <div class="thumbnail">
+                <img src="{{comment.avatar}}" alt="">
+                <div class="caption">
+                    <h3>{{comment.name}}</h3>
+                    <p>{{comment.name}} - {{comment.job}}</p>
+                    <p>{{comment.content}}</p>
+                    <p>
+                        <a href="#" class="btn btn-default" role="button" ng-click="modCommentBtn(comment)">
+                            修改
+                        </a> 
+                        <a href="#" class="btn btn-danger" role="button" ng-click="delCommentBtn(comment)">
+                            删除
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+     -->
+    <!-- <h2 id="planes">活动设置<button class="btn btn-default add" ng-click="addPlane()">新增活动</button></h2>
+    <h2 id="planes"><button class="btn btn-default add" ng-click="addPlane()">新增</button></h2>
+    <div class="row planes">
+        <div class="col-md-3 plane" ng-repeat="plane in data.planes">
+            <div class="thumbnail">
+                <img src="{{plane.imageurl}}" alt="">
+                <div class="caption">
+                    <h3>{{plane.title}}</h3>
+                    <p>{{plane.pre[1].label}}</p>
+                    <p>{{plane.membernum}}</p>
+                    <p>
+                        <a href="#" class="btn btn-default" role="button" ng-click="modPlaneBtn(plane)">
+                            修改
+                        </a> 
+                        <a href="#" class="btn btn-danger" role="button" ng-click="delPlaneBtn(plane)">
+                            删除
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr> -->
+
+  <!--   <h2 id="operations">场馆设置<button class="btn btn-default add" ng-click="addPlace()">新增场馆</button></h2>
+    <div class="row places">
+        <div class="col-md-3 place" ng-repeat="place in data.places">
+            <div class="thumbnail">
+                <img src="{{place.imageurl}}" alt="">
+                <div class="caption">
+                    <h3>{{place.title}}</h3>
+                    <p>{{place.addr}}</p>
+                    <p>{{place.tele}}</p>
+                    <p>
+                        <a href="#" class="btn btn-default" role="button" ng-click="modPlaceBtn(place)">
+                            修改
+                        </a> 
+                        <a href="#" class="btn btn-danger" role="button" ng-click="delPlaceBtn(place)">
+                            删除
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+
+    <h2 id="trains">培训设置<button class="btn btn-default add" ng-click="addTrain()">举办培训</button></h2>
+    <div class="row trains">
+        <div class="col-md-3 train" ng-repeat="train in data.trains">
+            <div class="thumbnail">
+                <img src="{{train.imageurl}}" alt="">
+                <div class="caption">
+                    <h3>{{train.title}}</h3>
+                    <p>{{train.addr}}</p>
+                    <p>{{train.tele}}</p>
+                    <p>
+                        <a href="#" class="btn btn-default" role="button" ng-click="modTrainBtn(train)">
+                            修改
+                        </a> 
+                        <a href="#" class="btn btn-danger" role="button" ng-click="delTrainBtn(train)">
+                            删除
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    <h2 id="planetypes">活动类别设置<button class="btn btn-default add" ng-click="addPlaneType()">新增活动类型</button></h2>
+    <div class="row planetypes">
+        <div class="col-md-12">
+            <ul class="setting-list planetype-list">
+                <li class="planetype" ng-repeat="planetype in data.planetypes">
+                    <span class="type-name">{{planetype.name}}</span>
+                    <button class="btn btn-danger" ng-click="deletePlaneType(planetype)">删除</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <hr>
+
+    <h2 id="operationtypes">场馆类别设置<button class="btn btn-default add" ng-click="addOperationType()">新增场馆类型</button></h2>
+    <div class="row operationtypes">
+        <div class="col-md-12">
+            <ul class="setting-list optype-list">
+                <li class="optype" ng-repeat="optype in data.operationtypes">
+                    <span class="type-name">{{optype.name}}</span>
+                    <button class="btn btn-danger" ng-click="deleteOperationType(optype)">删除</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <hr>
+
+    <h2 id="traintypes">培训类别设置<button class="btn btn-default add" ng-click="addTrainType()">新增培训类型</button></h2>
+    <div class="row traintypes">
+        <div class="col-md-12">
+            <ul class="setting-list traintype-list">
+                <li class="traintype" ng-repeat="traintype in data.traintypes">
+                    <span class="type-name">{{traintype.name}}</span>
+                    <button class="btn btn-danger" ng-click="deleteTrainType(traintype)">删除</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <hr>
+
+    <h2 id="aboutus">公司信息设置</h2> -->
+    <div class="row companyinfo">
+        <div class="col-md-12">
+            <form class="form-horizontal" id="companyInfoForm" enctype="multipart/form-data" action="/api/admin/company/edit" method="post" role="form" target="resultIframe">
+                        <input type="hidden" value="{{data.companyinfo._id}}" name="_id" id="_id" hidden>
+                        <input type="hidden" value="modify" name="action" id="action" hidden>
+                        <div class="form-group">
+                            <label for="logo" class="col-sm-2 control-label">logo</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="logo" id="logo">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="logo_url" class="col-sm-2 control-label">logo(url)</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" value="{{data.companyinfo.logo}}" name="logo_url" id="logo_url">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="aboutusImg" class="col-sm-2 control-label">关于我们-图片</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="aboutusImg" id="aboutusImg">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="aboutusImg_url" class="col-sm-2 control-label">关于我们(url)</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" value="{{data.companyinfo.aboutusImg}}" name="aboutusImg_url" id="aboutusImg_url">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="intro" class="col-sm-2 control-label">介绍</label>
+                            <div class="col-sm-10">
+                                <textarea name="intro" rows="10" class="form-control" id="intro">{{data.companyinfo.intro}}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="mail" class="col-sm-2 control-label">邮箱</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="mail" value="{{data.companyinfo.mail}}" class="form-control" id="mail" placeholder="请输入邮箱">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="col-sm-2 control-label">公司电话</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="phone" value="{{data.companyinfo.phone}}" class="form-control" id="phone" placeholder="请输入公司电话">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="wechat" class="col-sm-2 control-label">微信二维码</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="wechat" value="{{data.companyinfo.wechat}}" id="wechat">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="wechat_url" class="col-sm-2 control-label">微信二维码(url)</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" value="{{data.companyinfo.wechat}}" name="wechat_url" value="{{data.companyinfo.wechat}}" id="wechat_url">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-primary">提交修改</button>
+                            </div>
+                        </div>
+
+            </form>
+        </div>
+    </div>
+    <hr>
+
+
+    <!-- carousel section start -->
+    <div class="modal fade" id="carouselModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        修改轮播
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" enctype="multipart/form-data" action="/api/admin/carousel/edit" method="post" role="form" target="resultIframe">
+                        <input type="hidden" value="{{now_carousel._id}}" name="_id" id="_id" hidden>
+                        <input type="hidden" value="modify" name="action" id="action" hidden>
+                        <input type="hidden" value="{{now_carousel.active || ''}}" name="active" id="active" hidden>
+                        <div class="form-group">
+                            <label for="imageurl" class="col-sm-2 control-label">图片地址</label>
+                            <div class="col-sm-10">
+                                <input type="file" id="imageurl" name="imageurl" placeholder="请输入轮播图片地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="imageurl_url" class="col-sm-2 control-label">图片地址(url)</label>
+                            <div class="col-sm-10">
+                                <input type="text" value="{{now_carousel.imageurl}}" class="form-control" name="imageurl_url" id="imageurl_url" placeholder="请输入轮播图片地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">版块名称</label>
+                            <div class="col-sm-10">
+                                <input type="text" value="{{now_carousel.name}}" class="form-control" id="name" name="name" placeholder="请输入版块名称">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" ng-click="modCarouselSubmit()">
+                        提交
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- carousel section end -->
+
+    <!-- comment section start -->
+    <div class="modal fade" id="commentModel_add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        新增评论
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form" enctype="multipart/form-data" action="/api/admin/comment/edit" method="post" target="resultIframe">
+                        <input type="hidden" value="add" name="action" id="action" hidden>
+                        <div class="form-group">
+                            <label for="avatar" class="col-sm-2 control-label">头像</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="avatar" id="avatar" placeholder="请输入头像地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="avatar_url" class="col-sm-2 control-label">头像(url)</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="avatar_url" class="form-control" id="avatar_url" placeholder="请输入头像地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">评论人</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="name" class="form-control" id="name" placeholder="请输入评论人">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="job" class="col-sm-2 control-label">评论人职位</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="job" class="form-control" id="job" placeholder="请输入评论人职位">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="content" class="col-sm-2 control-label">评论内容</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="content" class="form-control" id="content" placeholder="请输入评论内容">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" ng-click="addCommentSubmit()">
+                        提交
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="commentModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        修改评论
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" enctype="multipart/form-data" action="/api/admin/comment/edit" method="post" role="form" target="resultIframe">
+                        <input type="hidden" value="{{now_comment._id}}" name="_id" id="_id" hidden>
+                        <input type="hidden" value="modify" name="action" id="action" hidden>
+                        <div class="form-group">
+                            <label for="avatar" class="col-sm-2 control-label">头像</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="avatar" id="avatar" placeholder="请输入头像地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="avatar_url" class="col-sm-2 control-label">头像(url)</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="avatar_url" value="{{now_comment.avatar}}" class="form-control" id="avatar_url" placeholder="请输入头像地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">评论人</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="name" value="{{now_comment.name}}" class="form-control" id="name" placeholder="请输入评论人">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="job" class="col-sm-2 control-label">评论人职位</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="job" value="{{now_comment.job}}" class="form-control" id="job" placeholder="请输入评论人职位">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="content" class="col-sm-2 control-label">评论内容</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="content" value="{{now_comment.content}}" class="form-control" id="content" placeholder="请输入评论内容">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" ng-click="modCommentSubmit()">
+                        提交
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- comment section end -->
+
+    <!-- plane section start -->
+    <div class="modal fade" id="planeModel_add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        新增活动
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" id="planeModal_form" enctype="multipart/form-data" action="/api/admin/plane/edit" method="post" role="form" target="resultIframe">
+                        <input type="hidden" value="add" name="action" id="action" hidden>
+                        <input type="hidden" value="{{planetype.name}}" name="typename" id="typename" hidden>
+                        <input type="hidden" value="{{planetype.type}}" name="type" id="type" hidden>
+                        <div class="form-group">
+                            <label for="imageurl" class="col-sm-2 control-label">活动图片</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="imageurl" id="imageurl" placeholder="请输入活动图片地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="imageurl_url" class="col-sm-2 control-label">活动图片(url)</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="imageurl_url" class="form-control" id="imageurl_url" placeholder="请输入活动图片地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="title" class="col-sm-2 control-label">活动标题</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="title" class="form-control" id="title" placeholder="请输入活动标题">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="membernum" class="col-sm-2 control-label">活动规模/人</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="membernum" class="form-control" id="membernum" placeholder="请输入活动规模/人">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="intro" class="col-sm-2 control-label">活动简介</label>
+                            <div class="col-sm-10">
+                                <textarea name="intro" class="form-control" id="intro" placeholder="请输入活动简介"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="video" class="col-sm-2 control-label">视频</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="video" id="video" placeholder="请输入视频地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="video_url" class="col-sm-2 control-label">视频(url)</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="video_url" class="form-control" id="video_url" placeholder="请输入视频地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="type" class="col-sm-2 control-label">活动类型</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" ng-options="typeitem.name for typeitem in data.planetypes" ng-model="planetype">
+                                </select>
+                                <!-- <select >
+                                    <option value="1">趣味运动会</option>
+                                    <option value="2">运动会</option>
+                                    <option value="3">球类比赛</option>
+                                </select> -->
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" ng-click="addPlaneSubmit()">
+                        提交
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="planeModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        修改活动
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form" enctype="multipart/form-data" action="/api/admin/plane/edit" method="post" target="resultIframe">
+                        <input type="hidden" value="modify" name="action" id="action" hidden>
+                        <input type="hidden" value="{{now_plane._id}}" name="_id" id="action" hidden>
+                        <input type="hidden" value="{{planetype.name}}" name="typename" id="typename" hidden>
+                        <input type="hidden" value="{{planetype.type}}" name="type" id="type" hidden>
+                        <div class="form-group">
+                            <label for="imageurl" class="col-sm-2 control-label">活动图片</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="imageurl" id="imageurl" placeholder="请输入活动图片地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="imageurl_url" class="col-sm-2 control-label">活动图片(url)</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="imageurl_url" value="{{now_plane.imageurl}}" class="form-control" id="imageurl_url" placeholder="请输入活动图片地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="title" class="col-sm-2 control-label">活动标题</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="title" value="{{now_plane.title}}" class="form-control" id="title" placeholder="请输入活动标题">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="membernum" class="col-sm-2 control-label">活动规模/人</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="membernum" value="{{now_plane.membernum}}" class="form-control" id="membernum" placeholder="请输入活动规模/人">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="intro" class="col-sm-2 control-label">活动简介</label>
+                            <div class="col-sm-10">
+                                <textarea name="intro" value="{{now_plane.intro}}" class="form-control" id="intro" placeholder="请输入活动简介"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="video" class="col-sm-2 control-label">视频</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="video" id="video" placeholder="请输入视频地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="video_url" class="col-sm-2 control-label">视频(url)</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="video_url" value="{{now_plane.video}}" class="form-control" id="video_url" placeholder="请输入视频地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="type" class="col-sm-2 control-label">活动类型</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" ng-options="typeitem.name for typeitem in data.planetypes" ng-model="planetype">
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" ng-click="modPlaneSubmit()">
+                        提交
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- plane section end -->
+
+    <!-- operation section start -->
+    <div class="modal fade" id="placeModel_add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        新增场馆
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form" enctype="multipart/form-data" action="/api/admin/place/edit" method="post" target="resultIframe">
+                        <input type="hidden" value="add" name="action" id="action" hidden>
+                        <input type="hidden" value="{{operationtype.name}}" name="typename" id="typename" hidden>
+                        <input type="hidden" value="{{operationtype.type}}" name="type" id="type" hidden>
+                        <div class="form-group">
+                            <label for="imageurl" class="col-sm-2 control-label">场馆图片</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="imageurl" id="imageurl" placeholder="请输入场馆图片地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="imageurl_url" class="col-sm-2 control-label">场馆图片(url)</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="imageurl_url" class="form-control" id="imageurl_url" placeholder="请输入场馆图片地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="title" class="col-sm-2 control-label">场馆名称</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="title" class="form-control" id="title" placeholder="请输入场馆名称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="addr" class="col-sm-2 control-label">场馆地址</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="addr" class="form-control" id="addr" placeholder="请输入场馆地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="tele" class="col-sm-2 control-label">联系电话</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="tele" class="form-control" id="tele" placeholder="请输入联系电话">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="intro" class="col-sm-2 control-label">场馆介绍</label>
+                            <div class="col-sm-10">
+                                <textarea name="intro" class="form-control" id="intro" placeholder="请输入介绍信息"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="video" class="col-sm-2 control-label">视频</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="video" id="video" placeholder="请输入视频地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="video_url" class="col-sm-2 control-label">视频(url)</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="video_url" class="form-control" id="video_url" placeholder="请输入视频地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="type" class="col-sm-2 control-label">场馆类型</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" ng-options="typeitem.name for typeitem in data.operationtypes" ng-model="operationtype">
+                                </select>
+                                <!-- <select id="type" name="type" class="form-control">
+                                    <option value="badminton">羽毛球</option>
+                                    <option value="tennis">网球</option>
+                                    <option value="football">足球</option>
+                                    <option value="swimming">游泳</option>
+                                </select> -->
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" ng-click="addPlaceSubmit()">
+                        提交
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="placeModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        修改活动
+                    </h4>
+                </div>
+                <div class="modal-body">
+                     <form class="form-horizontal" role="form" enctype="multipart/form-data" action="/api/admin/place/edit" method="post" target="resultIframe">
+                        <input type="hidden" value="modify" name="action" id="action" hidden>
+                        <input type="hidden" value="{{now_place._id}}" name="_id" id="action" hidden>
+                        <div class="form-group">
+                            <label for="imageurl" class="col-sm-2 control-label">场馆图片</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="imageurl" id="imageurl" placeholder="请输入场馆图片地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="imageurl_url" class="col-sm-2 control-label">场馆图片(url)</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="imageurl_url" value="{{now_place.imageurl}}" class="form-control" id="imageurl_url" placeholder="请输入场馆图片地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="title" class="col-sm-2 control-label">场馆名称</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="title" value="{{now_place.title}}" class="form-control" id="title" placeholder="请输入场馆名称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="addr" class="col-sm-2 control-label">场馆地址</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="addr" value="{{now_place.addr}}" class="form-control" id="addr" placeholder="请输入场馆地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="tele" class="col-sm-2 control-label">联系电话</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="tele" value="{{now_place.tele}}" class="form-control" id="tele" placeholder="请输入联系电话">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="intro" class="col-sm-2 control-label">场馆介绍</label>
+                            <div class="col-sm-10">
+                                <textarea name="intro" value="{{now_place.intro}}" class="form-control" id="intro" placeholder="请输入介绍信息"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="video" class="col-sm-2 control-label">视频</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="video" id="video" placeholder="请输入视频地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="video_url" class="col-sm-2 control-label">视频(url)</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="video_url" value="{{now_place.video}}" class="form-control" id="video_url" placeholder="请输入视频地址">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" ng-click="modPlaceSubmit()">
+                        提交
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- operation section end -->
+
+    <!-- train section start -->
+    <div class="modal fade" id="trainModel_add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        新增培训
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form" enctype="multipart/form-data" action="/api/admin/train/edit" method="post" target="resultIframe">
+                        <input type="hidden" value="add" name="action" id="action" hidden>
+                        <input type="hidden" value="{{traintype.name}}" name="typename" id="typename" hidden>
+                        <input type="hidden" value="{{traintype.type}}" name="type" id="type" hidden>
+                        <div class="form-group">
+                            <label for="imageurl" class="col-sm-2 control-label">培训海报</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="imageurl" id="imageurl" placeholder="请输入培训海报地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="imageurl_url" class="col-sm-2 control-label">培训海报(url)</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="imageurl_url" class="form-control" id="imageurl_url" placeholder="请输入培训海报地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="title" class="col-sm-2 control-label">培训名称</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="title" class="form-control" id="title" placeholder="请输入培训名称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="addr" class="col-sm-2 control-label">培训地址</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="addr" class="form-control" id="addr" placeholder="请输入培训地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="tele" class="col-sm-2 control-label">联系电话</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="tele" class="form-control" id="tele" placeholder="请输入联系电话">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="intro" class="col-sm-2 control-label">培训介绍</label>
+                            <div class="col-sm-10">
+                                <textarea name="intro" class="form-control" id="intro" placeholder="请输入介绍信息"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="video" class="col-sm-2 control-label">视频</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="video" id="video" placeholder="请输入视频地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="video_url" class="col-sm-2 control-label">视频(url)</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="video_url" class="form-control" id="video_url" placeholder="请输入视频地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="type" class="col-sm-2 control-label">培训类型</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" ng-options="typeitem.name for typeitem in data.traintypes" ng-model="traintype">
+                                </select>
+                                <!-- <select id="type" name="type" class="form-control">
+                                    <option value="badminton">羽毛球</option>
+                                    <option value="tennis">网球</option>
+                                    <option value="football">足球</option>
+                                    <option value="swimming">游泳</option>
+                                    <option value="basketball">篮球</option>
+                                    <option value="score">中考体育</option>
+                                </select> -->
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" ng-click="addTrainSubmit()">
+                        提交
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="trainModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        更新培训信息
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form" enctype="multipart/form-data" action="/api/admin/train/edit" method="post" target="resultIframe">
+                        <input type="hidden" value="{{now_train._id}}" name="_id" id="action" hidden>
+                        <input type="hidden" value="modify" name="action" id="action" hidden>
+
+                        <div class="form-group">
+                            <label for="imageurl" class="col-sm-2 control-label">培训海报</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="imageurl" id="imageurl" placeholder="请输入培训海报地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="imageurl_url" class="col-sm-2 control-label">培训海报(url)</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="imageurl_url" value="{{now_train.imageurl}}" class="form-control" id="imageurl_url" placeholder="请输入培训海报地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="title" class="col-sm-2 control-label">培训名称</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="title" value="{{now_train.title}}" class="form-control" id="title" placeholder="请输入培训名称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="addr" class="col-sm-2 control-label">培训地址</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="addr" value="{{now_train.addr}}" class="form-control" id="addr" placeholder="请输入培训地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="tele" class="col-sm-2 control-label">联系电话</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="tele" value="{{now_train.tele}}" class="form-control" id="tele" placeholder="请输入联系电话">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="intro" class="col-sm-2 control-label">培训介绍</label>
+                            <div class="col-sm-10">
+                                <textarea name="intro" value="{{now_train.intro}}" class="form-control" id="intro" placeholder="请输入介绍信息"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="video" class="col-sm-2 control-label">视频</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="video" id="video" placeholder="请输入视频地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="video_url" class="col-sm-2 control-label">视频(url)</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="video_url" value="{{now_train.video}}" class="form-control" id="video_url" placeholder="请输入视频地址">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" ng-click="modTrainSubmit()">
+                        提交
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- train section end -->
+
+    <!-- planetype section start -->
+    <div class="modal fade" id="planeTypeModel_add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        新增类型
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">类型</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="name" placeholder="请输入类型">
+                            </div>
+                        </div>
+                        <!-- <div class="form-group">
+                            <label for="type" class="col-sm-2 control-label">类型(英文)</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="type" placeholder="请输入英文类型">
+                            </div>
+                        </div> -->
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" ng-click="addPlaneTypesSubmit()">
+                        提交
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- planetype section end -->
+
+    <!-- operationtype section start -->
+    <div class="modal fade" id="opTypeModel_add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        新增类型
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">类型(中文)</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="name" placeholder="请输入中文类型">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="type" class="col-sm-2 control-label">类型(英文)</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="type" placeholder="请输入英文类型">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" ng-click="addOperationTypesSubmit()">
+                        提交
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- operationtype section end -->
+
+    <!-- traintype section start -->
+    <div class="modal fade" id="trainTypeModel_add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        新增类型
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">类型(中文)</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="name" placeholder="请输入中文类型">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="type" class="col-sm-2 control-label">类型(英文)</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="type" placeholder="请输入英文类型">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" ng-click="addTrainTypesSubmit()">
+                        提交
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- traintype section end -->
+
+    <iframe src="" name="resultIframe" id="resultIframe" frameborder="0" style="display: none;"></iframe>
+
+    
+    
+
+</div>
