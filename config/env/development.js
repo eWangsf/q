@@ -11,7 +11,7 @@ module.exports = {
         // Enable mongoose debug mode
         debug: true
     },
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 80,
     host: process.env.HOST || 'localhost',
     templateEngine: 'swig',
     // sessionSecret should be changed for security measures and concerns
