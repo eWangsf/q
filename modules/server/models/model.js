@@ -62,7 +62,8 @@ var staticsSchema = new Schema({
     operationNum: Number,
     operationImgUrl: String,
     trainNum: Number,
-    trainImgUrl: String
+    trainImgUrl: String,
+    totalAmount: Number
 });
 
 var companyInfo = new Schema({
@@ -70,6 +71,7 @@ var companyInfo = new Schema({
     aboutImg: String,
     phone: String,
     mail: String,
+    addr: String,
     aboutusImg: String,
     intro: String,
     wechat: String,

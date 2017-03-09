@@ -37,8 +37,11 @@ exports.getHomeData = function (req, res) {
     var promise9 = models.traintypes
         .find()
         .exec();
+    var promise10 = models.statistic
+        .find()
+        .exec();
 
-    q.all([promise1, promise2, promise3, promise4, promise5, promise6, promise7, promise8, promise9])
+    q.all([promise1, promise2, promise3, promise4, promise5, promise6, promise7, promise8, promise9, promise10])
         .then(function (dbdata) {
             data.carousels = dbdata[0];
             data.comments = dbdata[1]; 
@@ -49,6 +52,7 @@ exports.getHomeData = function (req, res) {
             data.planetypes = dbdata[6]; 
             data.operationtypes = dbdata[7]; 
             data.traintypes = dbdata[8]; 
+            data.statistic = dbdata[9][0]; 
             res.json(data);           
         }); 
 }
@@ -450,18 +454,55 @@ exports.editCompanyInfo = function (req, res) {
 
     var logo = (files.logo && files.logo.length > 0 && files.logo[0].filename.length > 0) ? ('/images/uploads/' + files.logo[0].filename) : (obj.logo_url),
         aboutusImg = (files.aboutusImg && files.aboutusImg.length > 0 && files.aboutusImg[0].filename.length > 0) ? ('/images/uploads/' + files.aboutusImg[0].filename) : (obj.aboutusImg_url),
-        wechat = (files.wechat && files.wechat.length > 0 && files.wechat[0].filename.length > 0) ? ('/images/uploads/' + files.wechat[0].filename) : (obj.wechat_url);
+        wechat = (files.wechat && files.wechat.length > 0 && files.wechat[0].filename.length > 0) ? ('/images/uploads/' + files.wechat[0].filename) : (obj.wechat_url),
+        arr = [];
+    arr = files.friendlogo.map(function (item) {
+        return item.path.replace(/public/i, "");
+    })
 
+    switch(action) {
+        case "modify": {
+            var promise = _model
+                .findOne({_id: obj._id})
+                .exec();
+            promise.then(function (data) {
+                var friends = data.friends.concat(arr);
+                // res.json({
+                //     friends: friends
+                // })
+                // return ;
+                _model
+                    .update({_id: obj._id}, {$set: {
+                        logo: logo,
+                        aboutusImg: aboutusImg,
+                        intro: obj.intro,
+                        mail: obj.mail,
+                        phone: obj.phone,
+                        wechat: wechat,
+                        friends: friends
+                    }})
+                    .exec(function (_err, _result) {
+                        handleDB(req, res, _err, _result);
+                    }); 
+            });
+
+            break;
+        }
+    }  
+} 
+
+exports.editStatistic = function (req, res) {
+    var obj = req.body,
+        action = req.body.action;
+    var _model = models.statistic;
     switch(action) {
         case "modify": {
             _model
                 .update({_id: obj._id}, {$set: {
-                    logo: logo,
-                    aboutusImg: aboutusImg,
-                    intro: obj.intro,
-                    mail: obj.mail,
-                    phone: obj.phone,
-                    wechat: wechat
+                    planeNum: obj.planeNum,
+                    operationNum: obj.operationNum,
+                    trainNum: obj.trainNum,
+                    totalAmount: obj.totalAmount
                 }})
                 .exec(function (_err, _result) {
                     handleDB(req, res, _err, _result);
@@ -469,7 +510,7 @@ exports.editCompanyInfo = function (req, res) {
             break;
         }
     }  
-} 
+}
 
 function handleDB(req, res, _err, _result) {
     if(_err == "db error") {

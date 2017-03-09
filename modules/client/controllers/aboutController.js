@@ -5,12 +5,18 @@ angular.module('core')
 
 function ($http, $scope, $rootScope, utility, dataManager) {
     
-    dataManager.getCompanyInfo(function (data) {
-        $scope.info = data;
+    if($rootScope.companyinfo) {
+        $scope.info = $rootScope.companyinfo;
+        $(".about-content").html($scope.info.intro);
+    } else {
+        dataManager.getCompanyInfo(function (data) {
+            $rootScope.companyinfo = data;
+            $scope.info = $rootScope.companyinfo;
+        });
+    }
 
-    });
 
-    
+
 }
 
 ]);

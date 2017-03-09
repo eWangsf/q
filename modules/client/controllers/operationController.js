@@ -19,6 +19,19 @@ function ($scope, $rootScope, dataManager) {
     //     label: '球类比赛'
     // }];
     // $scope.typeitem = $scope.types[0];
+    if($rootScope.statics) {
+        $scope.statistic = $rootScope.statics;
+        $scope.digits = ($scope.statistic.operationNum + "").split("");
+    } else {
+        dataManager.getStatics(function (data) {
+            $scope.statistic = data;
+            $scope.digits = (data.operationNum + "").split("");
+        });
+    }
+    // dataManager.getStatics(function (data) {
+    //     $scope.statistic = data;
+    //     $scope.digits = (data.operationNum + "").split("");
+    // });
 
     dataManager.getOperationTypes(function (data) {
         $scope.types = data;

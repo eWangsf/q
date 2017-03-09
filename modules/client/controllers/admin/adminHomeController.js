@@ -7,47 +7,47 @@ function ($scope, $rootScope, dataManager) {
 
     dataManager.getHomeData(function (data) {
         $scope.data = data;
+        $("#companyInfoForm .note-editable").html(data.companyinfo.intro);
     });
 
-    // $('#companyInfoForm #intro').summernote();
     $("form").submit(function() {
         $(this).find('#intro').html($(this).find(".note-editable").html());
         $(this).find('.note-frame input').remove();
     });
     $('[name="intro"]').summernote({
-            callbacks: {
-                onImageUpload: function (files) {
-                    var files = $(files);
-                    var target = $(this);
-                    files.each(function() {
-                        
-                        var file = this;
-                        var data = new FormData();
-                        data.append("append", file);
-                        $.ajax({
-                            data : data,
-                            type : "POST",
-                            url : "/upload",
-                            cache : false,
-                            contentType : false,
-                            processData : false,
-                            success : function(response) {
-                                var data = response.append;
-                                if(data.length == 0) {
-                                    return ;
-                                }
-                                data[0].path = data[0].path.replace(/public/, "");
-                                $(target).summernote('insertImage', data[0].path);
-                            },
-                            error : function (err) {
-                                alert("图片上传失败，请稍后重试");
+        callbacks: {
+            onImageUpload: function (files) {
+                var files = $(files);
+                var target = $(this);
+                files.each(function() {
+                    
+                    var file = this;
+                    var data = new FormData();
+                    data.append("append", file);
+                    $.ajax({
+                        data : data,
+                        type : "POST",
+                        url : "/upload",
+                        cache : false,
+                        contentType : false,
+                        processData : false,
+                        success : function(response) {
+                            var data = response.append;
+                            if(data.length == 0) {
+                                return ;
                             }
-                        });
+                            data[0].path = data[0].path.replace(/public/, "");
+                            $(target).summernote('insertImage', data[0].path);
+                        },
+                        error : function (err) {
+                            alert("图片上传失败，请稍后重试");
+                        }
                     });
-                    // $('#planeModel_add form').append();
-                }
+                });
+                // $('#planeModel_add form').append();
             }
-        });
+        }
+    });
     document.getElementById('resultIframe').onload = function () {
         var html = document.getElementById('resultIframe').contentWindow.document.body.innerText;
         if ((/Error/i).test(html)) {
@@ -167,6 +167,7 @@ function ($scope, $rootScope, dataManager) {
         $('#planeModel #type').change(function () {
             $('#planeModel #typename').val($('#planeModel #type option:selected').text());
         });
+        $('#planeModel .note-editable').html(plane.intro || "暂无介绍");
         // $('#planeModel #intro').summernote();
     }
     $scope.modPlaneSubmit = function () {
@@ -230,6 +231,7 @@ function ($scope, $rootScope, dataManager) {
     $scope.modPlaceBtn = function (place) {
         $scope.now_place = place;
         $('#placeModel').modal();
+        $('#placeModel .note-editable').html(place.intro || "暂无介绍");
         // $('#placeModel #intro').summernote();
     }
     $scope.modPlaceSubmit = function () {
@@ -283,6 +285,8 @@ function ($scope, $rootScope, dataManager) {
     $scope.modTrainBtn = function (train) {
         $scope.now_train = train;
         $('#trainModel').modal();
+        $('#trainModel .note-editable').html(train.intro || "暂无介绍");
+
         // $('#trainModel #intro').summernote();
     }
     $scope.modTrainSubmit = function () {
@@ -374,6 +378,16 @@ function ($scope, $rootScope, dataManager) {
         dataManager.editCompanyInfo(obj, 'modify', function (data) {
             window.location.href = "/admin";
         })
+    }
+
+    $scope.addFriend = function () {
+        if($('.friendlogo').val() == 0) {
+            alert("您还未上传文件");
+            return;
+        }
+        $('#addFriendBtn').before('<input type="file" name="friendlogo" class="friendlogo" />');
+        return false;
+
     }
     
     

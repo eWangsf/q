@@ -9,10 +9,11 @@
         <li><a href="#trains">培训设置</a></li>
         <li><a href="#traintypes">培训类型设置</a></li>
         <li><a href="#aboutus">公司信息设置</a></li>
+        <li><a href="#statistic">公司信息设置</a></li>
     </ul>
     <span id="toTop" title="转到顶部" class="glyphicon glyphicon-arrow-up" ng-click="toTop()"></span>
     
-    <!-- <h2 id="carousels">轮播图片设置</h2>
+    <h2 id="carousels">轮播图片设置</h2>
     <div class="row carsousels">
         <div class="col-md-3 carousel" ng-repeat="carousel in data.carousels">
             <div class="thumbnail">
@@ -52,8 +53,8 @@
         </div>
     </div>
     <hr>
-     -->
-    <!-- <h2 id="planes">活动设置<button class="btn btn-default add" ng-click="addPlane()">新增活动</button></h2>
+
+    <h2 id="planes">活动设置<button class="btn btn-default add" ng-click="addPlane()">新增活动</button></h2>
     <h2 id="planes"><button class="btn btn-default add" ng-click="addPlane()">新增</button></h2>
     <div class="row planes">
         <div class="col-md-3 plane" ng-repeat="plane in data.planes">
@@ -75,9 +76,9 @@
             </div>
         </div>
     </div>
-    <hr> -->
+    <hr>
 
-  <!--   <h2 id="operations">场馆设置<button class="btn btn-default add" ng-click="addPlace()">新增场馆</button></h2>
+    <h2 id="operations">场馆设置<button class="btn btn-default add" ng-click="addPlace()">新增场馆</button></h2>
     <div class="row places">
         <div class="col-md-3 place" ng-repeat="place in data.places">
             <div class="thumbnail">
@@ -163,7 +164,7 @@
     </div>
     <hr>
 
-    <h2 id="aboutus">公司信息设置</h2> -->
+    <h2 id="aboutus">公司信息设置</h2>
     <div class="row companyinfo">
         <div class="col-md-12">
             <form class="form-horizontal" id="companyInfoForm" enctype="multipart/form-data" action="/api/admin/company/edit" method="post" role="form" target="resultIframe">
@@ -193,12 +194,12 @@
                                 <input type="text" class="form-control" value="{{data.companyinfo.aboutusImg}}" name="aboutusImg_url" id="aboutusImg_url">
                             </div>
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="intro" class="col-sm-2 control-label">介绍</label>
                             <div class="col-sm-10">
-                                <textarea name="intro" rows="10" class="form-control" id="intro">{{data.companyinfo.intro}}</textarea>
+                                <textarea name="intro" rows="10" class="form-control" data-intro="{{data.companyinfo.intro}}" id="intro"></textarea>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <label for="mail" class="col-sm-2 control-label">邮箱</label>
                             <div class="col-sm-10">
@@ -224,6 +225,14 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="col-sm-2 control-label">合作伙伴</label>
+                            <div class="col-sm-10">
+                                <img class="friend" src="{{friend}}" alt="" ng-repeat="friend in data.companyinfo.friends">
+                                <input type="file" name="friendlogo" class="friendlogo" />
+                                <span class="btn btn-default" id="addFriendBtn" ng-click="addFriend()">新增伙伴</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-primary">提交修改</button>
                             </div>
@@ -233,6 +242,47 @@
         </div>
     </div>
     <hr>
+
+
+    <h2 id="statistic">数据配置</h2>
+    <div class="row statistic">
+        <div class="col-md-12">
+            <form class="form-horizontal" id="statisticForm" action="/api/admin/statistic/edit" method="post" role="form" target="resultIframe">
+                        <input type="hidden" value="{{data.statistic._id}}" name="_id" id="_id" hidden>
+                        <input type="hidden" value="modify" name="action" id="action" hidden>
+                        <div class="form-group">
+                            <label for="planeNum" class="col-sm-2 control-label">活动数量：</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" value="{{data.statistic.planeNum}}" name="planeNum" id="planeNum">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="operationNum" class="col-sm-2 control-label">operation数量：</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" value="{{data.statistic.operationNum}}" name="operationNum" id="operationNum">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="trainNum" class="col-sm-2 control-label">train数量：</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" value="{{data.statistic.trainNum}}" name="trainNum" id="trainNum">
+                            </div>
+                        </div> 
+                        <div class="form-group">
+                            <label for="totalAmount" class="col-sm-2 control-label">总金额：</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" value="{{data.statistic.totalAmount}}" name="totalAmount" id="totalAmount">
+                            </div>
+                        </div>                        
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-primary">提交修改</button>
+                            </div>
+                        </div>
+
+            </form>
+        </div>
+    </div>
 
 
     <!-- carousel section start -->
@@ -527,7 +577,7 @@
                         <div class="form-group">
                             <label for="intro" class="col-sm-2 control-label">活动简介</label>
                             <div class="col-sm-10">
-                                <textarea name="intro" value="{{now_plane.intro}}" class="form-control" id="intro" placeholder="请输入活动简介"></textarea>
+                                <textarea name="intro" class="form-control" id="intro" data-intro="{{now_plane.membernum}}" placeholder="请输入活动简介"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -613,7 +663,7 @@
                         <div class="form-group">
                             <label for="intro" class="col-sm-2 control-label">场馆介绍</label>
                             <div class="col-sm-10">
-                                <textarea name="intro" class="form-control" id="intro" placeholder="请输入介绍信息"></textarea>
+                                <textarea name="intro" class="form-control" id="intro"  placeholder="请输入介绍信息"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -701,7 +751,7 @@
                         <div class="form-group">
                             <label for="intro" class="col-sm-2 control-label">场馆介绍</label>
                             <div class="col-sm-10">
-                                <textarea name="intro" value="{{now_place.intro}}" class="form-control" id="intro" placeholder="请输入介绍信息"></textarea>
+                                <textarea name="intro" data-intro="{{now_place.intro}}" class="form-control" id="intro" placeholder="请输入介绍信息"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -871,7 +921,7 @@
                         <div class="form-group">
                             <label for="intro" class="col-sm-2 control-label">培训介绍</label>
                             <div class="col-sm-10">
-                                <textarea name="intro" value="{{now_train.intro}}" class="form-control" id="intro" placeholder="请输入介绍信息"></textarea>
+                                <textarea name="intro" data-intro="{{now_train.intro}}" class="form-control" id="intro" placeholder="请输入介绍信息"></textarea>
                             </div>
                         </div>
                         <div class="form-group">

@@ -2,7 +2,7 @@
   background: #fff; }
   .admin .container {
     padding-top: 0; }
-  .admin #planes {
+  .admin #carousels {
     margin-top: 80px; }
   .admin .thumbnail > img, .admin .thumbnail a > img {
     height: 210px; }
@@ -14,14 +14,14 @@
     position: fixed;
     z-index: 100; }
     .admin .admin-list li {
-      margin: 0.5rem 0.75rem;
+      margin: 0.5rem 0.5rem;
       display: inline-block;
       line-height: 1.5;
       background: #fff;
       border: 1px solid #f5f5f5;
       box-shadow: 5px 5px 5px #ccc; }
       .admin .admin-list li a {
-        padding: 0.5rem 1rem;
+        padding: 0.5rem 0.75rem;
         display: inline-block;
         width: 100%;
         height: 100%; }
@@ -30,6 +30,13 @@
     .admin .setting-list li {
       display: inline-block;
       min-width: 150px; }
+  .admin .friend {
+    margin-right: 10px;
+    display: inline-block;
+    width: auto;
+    height: 50px; }
+  .admin .friendlogo {
+    display: inline-block; }
   .admin form .note-editor.note-frame .note-editing-area .note-editable {
     min-height: 300px;
     overflow: scroll; }

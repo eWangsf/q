@@ -5,6 +5,7 @@ angular.module('core')
 
 function ($scope, $rootScope, dataManager) {
 
+    $("#myCarousel").carousel();
     $scope.carousels = [];
 
     dataManager.getCarousels(function (data) {

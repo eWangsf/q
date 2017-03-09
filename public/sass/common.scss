@@ -144,15 +144,6 @@ a.clear:hover {
             text-decoration: none;
         }
     }
-    // .item:hover {
-    //     font-size: 2.5rem;
-
-    //     .icon {
-    //         // width: 2.2rem;
-    //         // height: 2.2rem;
-    //         // background-size: 2.2rem 2.2rem;
-    //     }
-    // }
 }
 
 $digitcolor: rgba(36, 128, 236, 1);
@@ -189,22 +180,7 @@ $digitcolor: rgba(36, 128, 236, 1);
         width: 10rem;
         height: 1.8rem;
         line-height: 1.8rem;
-        // font-size: 1.025rem;
-        // border-color: rgba(0, 0, 0, 0.5);
         outline: none;
-        // .select-item {
-        //     width: 10rem;
-        //     height: 3rem;
-        //     line-height: 3rem;
-        //     display: inline-block;
-        //     border-radius: 0.15rem;
-        //     cursor: pointer;
-        //     text-align: center;
-        // }
-        // .select-item:hover,
-        // .select-item.active {
-        //     background: $selectActiveBgColor;
-        // }
     }
 }
 
@@ -213,6 +189,7 @@ $digitcolor: rgba(36, 128, 236, 1);
     margin: 0 auto;
     width: 70%;
     line-height: 2rem;
+
     .about-title {
         margin: 3rem auto 3rem auto;
         text-align: center;
@@ -220,6 +197,41 @@ $digitcolor: rgba(36, 128, 236, 1);
     .about-img {
         margin: 1.5rem 0;
     }
+    #contact {
+        text-align: center;
+        p {
+            margin-bottom: 5px;
+            line-height: 1.5rem;
+        }
+        .contact-container {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid #c4c6c8;
+            padding: 1rem;
+
+            .addr {
+                line-height: 63px;
+                position: relative;
+            }
+            .addr::before {
+                content: "";
+                margin: auto;
+                width: 1px;
+                height: 90%;
+                left: 90%;
+                background: #c4c6c8;
+                position: absolute;
+            }
+        }
+    }
+    #friends {
+        text-align: center;
+        .friend {
+            padding: 1rem;
+        }
+    }
+
+    
 
 }
 
@@ -328,7 +340,7 @@ $digitcolor: rgba(36, 128, 236, 1);
         }
     }
     .about {
-        width: 100%;
+        width: 90%;
     }
 }
 // i6及-ipad 间距变宽

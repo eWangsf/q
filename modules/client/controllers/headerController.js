@@ -9,6 +9,10 @@ function ($scope, $rootScope, dataManager) {
         $scope.companyinfo = $rootScope.companyinfo;
     });
     
+    dataManager.getStatics(function (data) {
+        $rootScope.statics = data;
+    });
+    
 
 }
 

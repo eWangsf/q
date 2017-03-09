@@ -121,8 +121,9 @@ body {
       text-align: center; }
       .comment-content .comment-item .user-container img {
         margin-bottom: 0.5rem;
+        width: 4.2rem;
         height: 4.2rem;
-        border-radius: 2.5rem; }
+        border-radius: 2.1rem; }
   .comment-content .comment-list:after {
     content: '';
     display: inline-block;

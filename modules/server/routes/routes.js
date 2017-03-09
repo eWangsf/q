@@ -11,8 +11,8 @@ var multer = require('multer'),
             cb(null, './public/images/uploads/')
         },
         filename: function (req, file, cb) {
-            var fileformat = (file.originalname).split('.')
-            cb(null, file.fieldname + fileformat[fileformat.length-1])
+            var fileformat = (file.originalname).split('.');
+            cb(null, file.fieldname + Date.now() + "." + fileformat[fileformat.length-1]);
         }
     }),
     upload = multer({storage: storage});
@@ -96,9 +96,11 @@ module.exports = function (app) {
         upload.fields([
             {name: "logo", maxCount: 1}, 
             {name: "aboutusImg", maxCount: 1}, 
-            {name: "wechat", maxCount: 1}
+            {name: "wechat", maxCount: 1},
+            {name: "friendlogo", maxCount: 10}
         ]), 
         admin.editCompanyInfo);
+    app.route('/api/admin/statistic/edit').post(admin.editStatistic);
 
 
     app.route('/admin').get(core.renderAdmin);

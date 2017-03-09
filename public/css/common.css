@@ -165,6 +165,31 @@ a.clear:hover {
     text-align: center; }
   .about .about-img {
     margin: 1.5rem 0; }
+  .about #contact {
+    text-align: center; }
+    .about #contact p {
+      margin-bottom: 5px;
+      line-height: 1.5rem; }
+    .about #contact .contact-container {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid #c4c6c8;
+      padding: 1rem; }
+      .about #contact .contact-container .addr {
+        line-height: 63px;
+        position: relative; }
+      .about #contact .contact-container .addr::before {
+        content: "";
+        margin: auto;
+        width: 1px;
+        height: 90%;
+        left: 90%;
+        background: #c4c6c8;
+        position: absolute; }
+  .about #friends {
+    text-align: center; }
+    .about #friends .friend {
+      padding: 1rem; }
 
 .footer {
   padding: 1rem 0;
@@ -236,7 +261,7 @@ a.clear:hover {
     font-size: 4rem;
     line-height: 4rem; }
   .about {
-    width: 100%; } }
+    width: 90%; } }
 
 @media screen and (min-width: 375px) and (max-width: 750px) {
   .digits .digit {

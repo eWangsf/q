@@ -7,15 +7,15 @@
             <div class="sta-text">
                 <h4>目前已成功策划</h4>
                 <h4>个体育活动</h4>
-                <p class="amount-para">累计总金额<span class="total-amount">39718029</span>元</p>
+                <p class="amount-para">累计总金额<span class="total-amount">{{statistic.totalAmount}}</span>元</p>
             </div>
             <div class="sta-num">
                 <ul class="digits">
-                    <li class="digit">1</li>
-                    <li class="digit">5</li>
+                    <li class="digit" ng-repeat="digit in digits">{{digit}}</li>
+                    <!-- <li class="digit">5</li>
                     <li class="digit">6</li>
                     <li class="digit">4</li>
-                    <li class="digit">1</li>
+                    <li class="digit">1</li> -->
                 </ul>
             </div>
         </div>
