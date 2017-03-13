@@ -38,14 +38,16 @@
 
     <div class="row planes">
         <div ng-repeat="plane in planes" class="col-xs-6 col-sm-4 col-md-4 layout">
-            <div class="thumbnail item">
-                <img src="{{plane.imageurl}}" alt="活动图片">
-                <div class="caption">
-                    <h5><a href="/plane/detail?id={{plane._id}}">{{plane.title}}</a></h5>
-                    <h5>{{plane.pre[1].label}}</h5>
-                    <h5>{{plane.membernum}}人</h5>                    
+            <a href="/plane/detail?id={{plane._id}}">
+                <div class="thumbnail item">
+                    <img src="{{plane.imageurl}}" alt="活动图片">
+                    <div class="caption">
+                        <h5>{{plane.title}}</h5>
+                        <h5>{{plane.pre[1].label}}</h5>
+                        <h5>{{plane.membernum}}人</h5>                    
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 

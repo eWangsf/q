@@ -456,9 +456,11 @@ exports.editCompanyInfo = function (req, res) {
         aboutusImg = (files.aboutusImg && files.aboutusImg.length > 0 && files.aboutusImg[0].filename.length > 0) ? ('/images/uploads/' + files.aboutusImg[0].filename) : (obj.aboutusImg_url),
         wechat = (files.wechat && files.wechat.length > 0 && files.wechat[0].filename.length > 0) ? ('/images/uploads/' + files.wechat[0].filename) : (obj.wechat_url),
         arr = [];
-    arr = files.friendlogo.map(function (item) {
-        return item.path.replace(/public/i, "");
-    })
+    if(files.friendlogo && files.friendlogo.length > 0) {
+        arr = files.friendlogo.map(function (item) {
+            return item.path.replace(/public/i, "");
+        })
+    }
 
     switch(action) {
         case "modify": {

@@ -14,14 +14,16 @@
 
     <div class="row trains">
         <div class="col-xs-6 col-offset-sm-1 col-sm-4 col-md-4 layout" ng-repeat="train in trains">
-            <div class="thumbnail item">
-                <img src="{{train.imageurl}}" alt="培训图片">
-                <div class="caption">
-                    <h5><a href="/train/detail?id={{train._id}}">{{train.title}}</a></h5>
-                    <h5>地区：{{train.addr}}</h5>
-                    <h5>联系电话： {{train.tele}}</h5>                    
+            <a href="/train/detail?id={{train._id}}">
+                <div class="thumbnail item">
+                    <img src="{{train.imageurl}}" alt="培训图片">
+                    <div class="caption">
+                        <h5>{{train.title}}</h5>
+                        <h5>地区：{{train.addr}}</h5>
+                        <h5>联系电话： {{train.tele}}</h5>                    
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
     
     </div>
