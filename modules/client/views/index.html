@@ -1,0 +1,58 @@
+<div class="container home" ng-controller="HomeController">
+    <ng-include src="'modules/client/views/header.html'">
+    </ng-include>
+    
+    <div class="row carousel-content" ng-controller="CarouselController" >
+        <div id="myCarousel" class="carousel slide">
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>   
+            <div class="carousel-inner" >
+                <div ng-repeat="c in carousels" class="item {{c.active}}">
+                    <img src="{{c.imageurl}}" alt="First slide">
+                    <span class="carousel-cnt-title">{{c.name}}</span>
+                    <a href="{{c.link}}"><button class="carousel-cnt-btn">进一步了解</button></a>
+                </div>
+            </div>
+            <a class="carousel-control left" href="#myCarousel" 
+                data-slide="prev">&lsaquo;
+            </a>
+            <a class="carousel-control right" href="#myCarousel" 
+                data-slide="next">&rsaquo;
+            </a>
+        </div>
+    </div>
+
+    <div class="row comment-content" ng-controller="CommentsController">
+        <h1>他们怎么说</h1>
+        <div class="scroll-container" ng-style="style">
+        
+            <div class="col-xs-12 col-sm-6 col-md-4 comment-item-layout" ng-repeat="comment in comments">
+                <div class="comment-item">
+                    <div class="col-xs-12 col-sm-12 col-md-12 comment-container">
+                        <p class="quote">
+                        {{comment.content}}
+                        </p>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 user-container">
+                        <img class="comment-avatar" src="{{comment.avatar}}" alt="">
+                        <h6>{{comment.name}}</h6>
+                        <h6>{{comment.job}}</h6>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="indicatiors">
+            <ul class="indicator-list">
+                <li class="indicatior-item" ng-repeat="index in commentArr" ng-class="{active: cindex==index}" ng-click="toggleComment(index)"></li>
+            </ul>
+        </div>
+    </div>
+    
+    <ng-include src="'modules/client/views/footer.html'">
+    </ng-include>
+
+</div>

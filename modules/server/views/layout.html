@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <base href="/">
+    <title>{{title}}</title>
+    <meta name="description" content="{{description}}">
+    {% for cssFile in cssFiles %}
+        <link rel="stylesheet" href="{{cssFile}}">
+    {% endfor %}
+
+</head>
+<body>
+    
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+    {% for jsFile in jsFiles %}
+        <script src="{{jsFile}}"></script>
+    {% endfor %}
+
+    <!-- // <script src="/livereload.js?snipver=1"></script> -->
+
+    <script>
+      document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+      ':35729/livereload.js?snipver=1"></' + 'script>')
+    </script> 
+    
+</body>
+</html>
