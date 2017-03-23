@@ -55,7 +55,7 @@ function ($scope, $rootScope, dataManager) {
         }
         var json = JSON.parse(html);
         if(json.code == 200) {
-            window.location.reload();
+            alert("操作成功，请刷新页面");
         } else {
             alert(json.errmsg || "操作失败，请刷新后重试");
         }
@@ -168,6 +168,12 @@ function ($scope, $rootScope, dataManager) {
             $('#planeModel #typename').val($('#planeModel #type option:selected').text());
         });
         $('#planeModel .note-editable').html(plane.intro || "暂无介绍");
+        var planetypes = $scope.data.planetypes;
+        for(var i =0; i < planetypes.length; i++) {
+            if(planetypes[i].type == plane.type) {
+                $scope.planetype = planetypes[i];
+            }
+        }
         // $('#planeModel #intro').summernote();
     }
     $scope.modPlaneSubmit = function () {
@@ -204,6 +210,7 @@ function ($scope, $rootScope, dataManager) {
         $('#placeModel_add #type').change(function () {
             $('#placeModel_add #typename').val($('#placeModel_add #type option:selected').text());
         });
+        $scope.operationtype = $scope.data.operationtypes[0];
         // $('#placeModel_add #intro').summernote();
     }
     $scope.addPlaceSubmit = function () {
@@ -258,6 +265,7 @@ function ($scope, $rootScope, dataManager) {
         $('#trainModel_add #type').change(function () {
             $('#trainModel_add #typename').val($('#trainModel_add #type option:selected').text());
         });
+        $scope.traintype = $scope.data.traintypes[0];
         // $('#trainModel_add #intro').summernote();
     }
     $scope.addTrainSubmit = function () {
@@ -381,13 +389,22 @@ function ($scope, $rootScope, dataManager) {
     }
 
     $scope.addFriend = function () {
-        if($('.friendlogo').val() == 0) {
-            alert("您还未上传文件");
-            return;
-        }
-        $('#addFriendBtn').before('<input type="file" name="friendlogo" class="friendlogo" />');
-        return false;
-
+        $('#friendModel_add').modal('show');
+    }
+    $scope.addFriendSubmit = function () {
+        $('#friendModel_add form').submit();
+    }
+    $scope.modFriend = function (friend) {
+        $scope.friend = friend;
+        $('#friendModel').modal("show");
+    }
+    $scope.modFriendSubmit = function () {
+        $('#friendModel form').submit();
+    }
+    $scope.deleteFriend = function (friend) {
+        dataManager.deleteFriend(friend, "delete", function (data) {
+            window.location.href = "/admin";
+        });
     }
     
     

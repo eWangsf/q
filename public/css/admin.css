@@ -51,3 +51,18 @@
     z-index: 999;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.075);
     cursor: pointer; }
+  .admin .delete-img-btn {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    line-height: 1rem;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer; }
+  .admin .img-add {
+    margin-right: 10px; }
+  .admin .flex {
+    display: flex; }
+  .admin .flex-column {
+    flex-direction: column; }

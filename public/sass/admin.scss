@@ -78,6 +78,27 @@
         cursor: pointer;
     }
 
+    .delete-img-btn {
+        display: inline-block;
+        width: 1rem;
+        height: 1rem;
+        line-height: 1rem;
+        text-align: center;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    .img-add {
+        margin-right: 10px;
+    }
+
+    .flex {
+        display: flex;
+    }
+    .flex-column {
+        flex-direction: column;
+    }
+
 
 
 }

@@ -9,7 +9,7 @@
         <li><a href="#trains">培训设置</a></li>
         <li><a href="#traintypes">培训类型设置</a></li>
         <li><a href="#aboutus">公司信息设置</a></li>
-        <li><a href="#statistic">公司信息设置</a></li>
+        <li><a href="#statistic">数据配置</a></li>
     </ul>
     <span id="toTop" title="转到顶部" class="glyphicon glyphicon-arrow-up" ng-click="toTop()"></span>
     
@@ -193,12 +193,18 @@
                                 <input type="text" class="form-control" value="{{data.companyinfo.aboutusImg}}" name="aboutusImg_url" id="aboutusImg_url">
                             </div>
                         </div>
-                        <!-- <div class="form-group">
+                        <div class="form-group">
+                            <label for="addr" class="col-sm-2 control-label">公司位置</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" value="{{data.companyinfo.addr}}" name="addr" id="addr">
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="intro" class="col-sm-2 control-label">介绍</label>
                             <div class="col-sm-10">
                                 <textarea name="intro" rows="10" class="form-control" data-intro="{{data.companyinfo.intro}}" id="intro"></textarea>
                             </div>
-                        </div> -->
+                        </div>
                         <div class="form-group">
                             <label for="mail" class="col-sm-2 control-label">邮箱</label>
                             <div class="col-sm-10">
@@ -225,9 +231,12 @@
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">合作伙伴</label>
-                            <div class="col-sm-10">
-                                <img class="friend" src="{{friend}}" alt="" ng-repeat="friend in data.companyinfo.friends">
-                                <input type="file" name="friendlogo" class="friendlogo" />
+                            <div class="col-sm-10 flex">
+                                <div class="img"  ng-repeat="friend in data.companyinfo.friends">
+                                    <img class="friend" src="{{friend.flogo}}" alt="">
+                                    <span class="btn btn-default btn-xs" ng-click="modFriend(friend)">修改</span>
+                                    <span class="btn btn-danger btn-xs" ng-click="deleteFriend(friend)">删除</span>
+                                </div>
                                 <span class="btn btn-default" id="addFriendBtn" ng-click="addFriend()">新增伙伴</span>
                             </div>
                         </div>
@@ -594,7 +603,7 @@
                         <div class="form-group">
                             <label for="type" class="col-sm-2 control-label">活动类型</label>
                             <div class="col-sm-10">
-                                <select class="form-control" ng-options="typeitem.name for typeitem in data.planetypes" ng-model="planetype">
+                                <select class="form-control" ng-options="typeitem.name for typeitem in data.planetypes" ng-model="planetype" >
                                 </select>
                             </div>
                         </div>
@@ -1068,6 +1077,98 @@
         </div>
     </div>
     <!-- traintype section end -->
+
+    <!-- friend section start -->
+    <div class="modal fade" id="friendModel_add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        新增合作伙伴
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" enctype="multipart/form-data" action="/api/admin/company/friend" method="post" role="form" target="resultIframe">
+                        <input type="hidden" value="add" name="action" id="action" hidden>
+                        <div class="form-group">
+                            <label for="flogo" class="col-sm-2 control-label">图标上传</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="flogo">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="flink" class="col-sm-2 control-label">官网链接</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="flink" id="flink" placeholder="请输入类型">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="fintro" class="col-sm-2 control-label">简介</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="fintro" id="fintro" placeholder="请输入简介">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" ng-click="addFriendSubmit()">
+                        提交
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="friendModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        编辑合作伙伴
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" enctype="multipart/form-data" action="/api/admin/company/friend" method="post" role="form" target="resultIframe">
+                        <input type="hidden" value="modify" name="action" id="action" hidden>
+                        <input type="hidden" value="{{friend.fid}}" name="fid" id="fid" hidden>
+                        <div class="form-group">
+                            <label for="flogo" class="col-sm-2 control-label">图标修改</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="flogo">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="flink" class="col-sm-2 control-label">官网链接</label>
+                            <div class="col-sm-10">
+                                <input type="text" value="{{friend.flink}}" class="form-control" name="flink" id="flink" placeholder="请输入类型">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="fintro" class="col-sm-2 control-label">简介</label>
+                            <div class="col-sm-10">
+                                <input type="text" value="{{friend.fintro}}" class="form-control" name="fintro" id="fintro" placeholder="请输入简介">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" ng-click="modFriendSubmit()">
+                        提交
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- friend section end -->
 
     <iframe src="" name="resultIframe" id="resultIframe" frameborder="0" style="display: none;"></iframe>
 

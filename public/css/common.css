@@ -187,9 +187,41 @@ a.clear:hover {
         background: #c4c6c8;
         position: absolute; }
   .about #friends {
+    margin-bottom: 2rem;
     text-align: center; }
     .about #friends .friend {
-      padding: 1rem; }
+      margin-right: 1rem;
+      height: 7rem;
+      line-height: 7rem; }
+      .about #friends .friend img {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 7rem; }
+    .about #friends a {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      float: left;
+      position: absolute;
+      top: -0.5rem;
+      left: 0; }
+    .about #friends a:hover .friendintro {
+      opacity: 0.8; }
+    .about #friends .friendintro {
+      padding: 0.5rem;
+      width: 100%;
+      height: 8rem;
+      border-radius: 10px;
+      background: #2E6099;
+      opacity: 0;
+      line-height: 1.5rem;
+      font-weight: 100;
+      display: table; }
+      .about #friends .friendintro span {
+        display: table-cell;
+        color: #fff;
+        vertical-align: middle; }
 
 .footer {
   padding: 1rem 0;

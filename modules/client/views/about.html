@@ -3,9 +3,8 @@
     </ng-include>
     
     <div class="row">
-        <h2 class="about-title" id="aboutus">关于力雅</h2>
+        <h2 class="about-title" id="aboutus">企业介绍</h2>
         <p class="about-content">
-        <!-- {{info.intro}} -->
         </p>
         <p class="about-img">
             <img src="{{info.aboutusImg}}" alt="">
@@ -24,12 +23,32 @@
         </div>
     </div>
     <div class="row" id="friends">
-        <h1>伙伴</h1>
+        <!-- <h1>战略合作伙伴</h1> -->
         <div class="friends">
             <div class="col-xs-6 col-sm-6 col-md-3 friend" ng-repeat="friend in info.friends" >
-                <img src="{{friend}}" alt="">
+                <img src="{{friend.flogo}}" alt="">
+                <a href="{{friend.flink}}">
+                    <div class="friendintro">
+                        <span>{{friend.fintro}}</span>
+                    </div>
+                </a>
             </div>
-            
+           <!--  <div class="col-xs-6 col-sm-6 col-md-3 friend" >
+                <img src="http://localhost:3000/images/4.png" alt="">
+                <a href="https://www.baidu.com">
+                    <div class="friendintro">
+                        <span>wefiuie2</span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-3 friend" >
+                <img src="http://localhost:3000/images/3.jpeg" alt="">
+                <a href="https://www.baidu.com">
+                    <div class="friendintro">
+                        <span>这里是一段介绍啊哈哈哈哈。还是帅帅计时开始</span>
+                    </div>
+                </a>
+            </div> -->
         </div>
     </div>
     

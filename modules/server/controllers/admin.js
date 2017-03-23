@@ -468,6 +468,7 @@ exports.editCompanyInfo = function (req, res) {
                 .findOne({_id: obj._id})
                 .exec();
             promise.then(function (data) {
+
                 var friends = data.friends.concat(arr);
                 // res.json({
                 //     friends: friends
@@ -477,11 +478,12 @@ exports.editCompanyInfo = function (req, res) {
                     .update({_id: obj._id}, {$set: {
                         logo: logo,
                         aboutusImg: aboutusImg,
+                        addr: obj.addr,
                         intro: obj.intro,
                         mail: obj.mail,
                         phone: obj.phone,
-                        wechat: wechat,
-                        friends: friends
+                        wechat: wechat
+                        // friends: friends
                     }})
                     .exec(function (_err, _result) {
                         handleDB(req, res, _err, _result);
@@ -492,6 +494,79 @@ exports.editCompanyInfo = function (req, res) {
         }
     }  
 } 
+
+exports.editFriend = function (req, res) {
+    var obj = req.body,
+        action = obj.action,
+        files = req.files;
+    
+    var _model = models.companyInfos;
+    var promise = _model
+        .findOne()
+        .exec();
+
+    promise.then(function (data) {
+        var friends = data.friends;
+        switch(action) {
+            case "add": {
+                var flogo = (files.flogo && files.flogo.length > 0) ? files.flogo[0] : {};
+                var path = flogo.path || ""; 
+                var fid = friends.length;
+                path = path.replace(/public/i, "");
+                friends.push({
+                    fid: fid,
+                    flogo: path,
+                    flink: obj.flink,
+                    fintro: obj.fintro
+                });
+                _model
+                    .update({_id: data._id}, {$set: {
+                        friends: friends
+                    }})
+                    .exec(function (_err, _result) {
+                        handleDB(req, res, _err, _result);
+                    }); 
+
+                break;
+            }
+            case "modify": {
+                var flogo = (files.flogo && files.flogo.length > 0) ? files.flogo[0] : {};
+                path = flogo.path || friends[obj.fid].flogo;
+                path = path.replace(/public/i, "");
+                friends[obj.fid] = {
+                    fid: obj.fid,
+                    flogo: path,
+                    flink: obj.flink,
+                    fintro: obj.fintro
+                }
+                _model
+                    .update({_id: data._id}, {$set: {
+                        friends: friends
+                    }})
+                    .exec(function (_err, _result) {
+                        handleDB(req, res, _err, _result);
+                    }); 
+                return ;
+            }
+            case "delete": {
+                friends.splice(obj.data.fid, 1);
+                for(var i = 0; i < friends.length; i++) {
+                    friends[i].fid = i;
+                }
+                _model
+                    .update({_id: data._id}, {$set: {
+                        friends: friends
+                    }})
+                    .exec(function (_err, _result) {
+                        handleDB(req, res, _err, _result);
+                    }); 
+                return ;
+            }
+        }
+            
+    });
+
+}
 
 exports.editStatistic = function (req, res) {
     var obj = req.body,

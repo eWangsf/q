@@ -37,6 +37,7 @@ function ($scope, $rootScope, dataManager) {
 
     dataManager.getPlaneTypes(function (data) {
         $scope.types = data;
+        $scope.types.unshift({name: "所有类型", type: 0});
         $scope.typeitem = $scope.types[0];
 
         $scope.planeFilter();
@@ -45,7 +46,7 @@ function ($scope, $rootScope, dataManager) {
     
 
     $scope.planeFilter = function () {
-        var type = $scope.typeitem.type || "";
+        var type = $scope.typeitem.type || 0;
         dataManager.getPlanes({type: type}, function (data) {   
             $scope.planes = data;
         });

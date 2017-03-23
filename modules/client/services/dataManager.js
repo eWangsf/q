@@ -194,6 +194,16 @@ angular.module('core')
                     logMe(callback, 'editCompanyInfo'));
             }
 
+            var deleteFriend = function (obj, action, callback) {
+                var para = {
+                    data: obj,
+                    action: action
+                };
+                handleResponse(
+                    utility.httpe.post('/api/admin/company/friend', para),
+                    logMe(callback, 'deleteFriend'));
+            }
+
 
             var test = function () {
 
@@ -233,6 +243,7 @@ angular.module('core')
                 'editOperationType': editOperationType,
                 'editTrainType': editTrainType,
                 'editCompanyInfo': editCompanyInfo,
+                'deleteFriend': deleteFriend,
                 // 'editTrain': editTrain,
                 'test': test
             };

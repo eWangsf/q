@@ -97,9 +97,14 @@ module.exports = function (app) {
             {name: "logo", maxCount: 1}, 
             {name: "aboutusImg", maxCount: 1}, 
             {name: "wechat", maxCount: 1},
-            {name: "friendlogo", maxCount: 10}
+            {name: "flogo", maxCount: 10}
         ]), 
         admin.editCompanyInfo);
+    app.post('/api/admin/company/friend', 
+        upload.fields([
+            {name: "flogo", maxCount: 1}
+        ]), 
+        admin.editFriend);
     app.route('/api/admin/statistic/edit').post(admin.editStatistic);
 
 

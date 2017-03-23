@@ -7,6 +7,14 @@ var mongoose = require("mongoose"),
 
 exports.getPlanes = function (req, res) {
     var _planeModel = models.plane;
+    if(parseInt(req.body.type) == 0) {
+        _planeModel
+            .find()
+            .exec(function (_err, _result) {
+                handleDB(req, res, _err, _result);
+            });
+        return ;
+    }
     _planeModel
         .find({type: parseInt(req.body.type)})
         .exec(function (_err, _result) {

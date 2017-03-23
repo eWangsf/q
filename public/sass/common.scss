@@ -225,9 +225,48 @@ $digitcolor: rgba(36, 128, 236, 1);
         }
     }
     #friends {
+        margin-bottom: 2rem;
         text-align: center;
         .friend {
-            padding: 1rem;
+            margin-right: 1rem;
+            height: 7rem;
+            line-height: 7rem;
+
+            img {
+                width: auto;
+                height: auto;
+                max-width: 100%;
+                max-height: 7rem;
+            }
+        }
+        a {
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            float: left;
+            position: absolute;
+            top: -0.5rem;
+            left: 0;
+        }
+        a:hover .friendintro {
+            opacity: 0.8;
+        }
+        .friendintro {
+            padding: 0.5rem;
+            width: 100%;
+            height: 8rem;
+            border-radius: 10px;
+            background: #2E6099;
+            opacity: 0;
+            line-height: 1.5rem;
+            font-weight: 100;
+
+            display: table;
+            span {
+                display: table-cell;
+                color: #fff;
+                vertical-align: middle;
+            }
         }
     }
 
