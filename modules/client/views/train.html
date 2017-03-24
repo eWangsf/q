@@ -29,12 +29,14 @@
 
     <div class="row trains fixture">
         <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="type in types">
-            <div class="item">
-                <a href="/train/train?type={{type.type}}">
+            <a href="/train/train?type={{type.type}}">
+                <div class="item">
+                
                     <!-- <i class="icon icon-badminton"></i> -->
                     <span class="name">{{type.name}}</span>
-                </a>
-            </div>
+                
+                </div>
+            </a>
         </div>
         <!-- <div class="col-xs-12 col-sm-6 col-md-4">
             <div class="item">

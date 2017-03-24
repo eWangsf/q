@@ -72,6 +72,7 @@ var companyInfo = new Schema({
     phone: String,
     mail: String,
     addr: String,
+    locationImg: String,
     aboutusImg: String,
     intro: String,
     wechat: String,

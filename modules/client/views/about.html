@@ -14,16 +14,19 @@
         <h1>联系我们</h1>
         <div class="col-xs-12 col-sm-12 col-md-12 contact-container">
             <div class="col-xs-12 col-sm-12 col-md-6 addr">
-                地址
+                总部
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 detail">
                 <p>{{info.phone}} | {{info.mail}}</p>
                 <p>{{info.addr}}</p>
             </div>
         </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <img src="{{info.locationImg}}" alt="">
+        </div>
     </div>
     <div class="row" id="friends">
-        <!-- <h1>战略合作伙伴</h1> -->
+        <h1>战略合作伙伴</h1>
         <div class="friends">
             <div class="col-xs-6 col-sm-6 col-md-3 friend" ng-repeat="friend in info.friends" >
                 <img src="{{friend.flogo}}" alt="">

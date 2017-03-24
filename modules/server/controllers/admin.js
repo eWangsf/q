@@ -455,6 +455,7 @@ exports.editCompanyInfo = function (req, res) {
     var logo = (files.logo && files.logo.length > 0 && files.logo[0].filename.length > 0) ? ('/images/uploads/' + files.logo[0].filename) : (obj.logo_url),
         aboutusImg = (files.aboutusImg && files.aboutusImg.length > 0 && files.aboutusImg[0].filename.length > 0) ? ('/images/uploads/' + files.aboutusImg[0].filename) : (obj.aboutusImg_url),
         wechat = (files.wechat && files.wechat.length > 0 && files.wechat[0].filename.length > 0) ? ('/images/uploads/' + files.wechat[0].filename) : (obj.wechat_url),
+        locationImg = (files.locationImg && files.locationImg.length > 0 && files.locationImg[0].filename.length > 0) ? ('/images/uploads/' + files.locationImg[0].filename) : (obj.location_url),
         arr = [];
     if(files.friendlogo && files.friendlogo.length > 0) {
         arr = files.friendlogo.map(function (item) {
@@ -482,6 +483,7 @@ exports.editCompanyInfo = function (req, res) {
                         intro: obj.intro,
                         mail: obj.mail,
                         phone: obj.phone,
+                        locationImg: locationImg,
                         wechat: wechat
                         // friends: friends
                     }})

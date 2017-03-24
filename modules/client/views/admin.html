@@ -172,7 +172,9 @@
                         <div class="form-group">
                             <label for="logo" class="col-sm-2 control-label">logo</label>
                             <div class="col-sm-10">
-                                <input type="file" name="logo" id="logo">
+                                <input type="file" name="logo" id="logo" class="hidden">
+                                <span class="editfilename">{{data.companyinfo.logo}}</span>
+                                <span class="btn btn-sm btn-warning edit">修改</span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -184,7 +186,9 @@
                         <div class="form-group">
                             <label for="aboutusImg" class="col-sm-2 control-label">关于我们-图片</label>
                             <div class="col-sm-10">
-                                <input type="file" name="aboutusImg" id="aboutusImg">
+                                <input type="file" name="aboutusImg" id="aboutusImg" class="hidden">
+                                <span class="editfilename">{{data.companyinfo.aboutusImg}}</span>
+                                <span class="btn btn-sm btn-warning edit">修改</span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -218,9 +222,25 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="locationImg" class="col-sm-2 control-label">总部地图</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="locationImg" value="{{data.companyinfo.locationImg}}" id="locationImg" class="hidden">
+                                <span class="editfilename">{{data.companyinfo.locationImg}}</span>
+                                <span class="btn btn-sm btn-warning edit">修改</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="location_url" class="col-sm-2 control-label">地图地址</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="location_url" value="{{data.companyinfo.locationImg}}" class="form-control" id="location_url">
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="wechat" class="col-sm-2 control-label">微信二维码</label>
                             <div class="col-sm-10">
-                                <input type="file" name="wechat" value="{{data.companyinfo.wechat}}" id="wechat">
+                                <input type="file" name="wechat" value="{{data.companyinfo.wechat}}" id="wechat" class="hidden">
+                                <span class="editfilename">{{data.companyinfo.wechat}}</span>
+                                <span class="btn btn-sm btn-warning edit">修改</span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -313,7 +333,9 @@
                         <div class="form-group">
                             <label for="imageurl" class="col-sm-2 control-label">图片地址</label>
                             <div class="col-sm-10">
-                                <input type="file" id="imageurl" name="imageurl" placeholder="请输入轮播图片地址">
+                                <input type="file" id="imageurl" name="imageurl" placeholder="请输入轮播图片地址" class="hidden">
+                                <span class="editfilename">{{now_carousel.imageurl}}</span>
+                                <span class="btn btn-sm btn-warning edit">修改</span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -417,7 +439,9 @@
                         <div class="form-group">
                             <label for="avatar" class="col-sm-2 control-label">头像</label>
                             <div class="col-sm-10">
-                                <input type="file" name="avatar" id="avatar" placeholder="请输入头像地址">
+                                <input type="file" name="avatar" id="avatar" placeholder="请输入头像地址" class="hidden">
+                                <span class="editfilename">{{now_comment.avatar}}</span>
+                                <span class="btn btn-sm btn-warning edit">修改</span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -561,7 +585,9 @@
                         <div class="form-group">
                             <label for="imageurl" class="col-sm-2 control-label">活动图片</label>
                             <div class="col-sm-10">
-                                <input type="file" name="imageurl" id="imageurl" placeholder="请输入活动图片地址">
+                                <input type="file" name="imageurl" id="imageurl" placeholder="请输入活动图片地址" class="hidden">
+                                <span class="editfilename">{{now_plane.imageurl}}</span>
+                                <span class="btn btn-sm btn-warning edit">修改</span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -591,7 +617,9 @@
                         <div class="form-group">
                             <label for="video" class="col-sm-2 control-label">视频</label>
                             <div class="col-sm-10">
-                                <input type="file" name="video" id="video" placeholder="请输入视频地址">
+                                <input type="file" name="video" id="video" placeholder="请输入视频地址" class="hidden">
+                                <span class="editfilename">{{now_plane.video}}</span>
+                                <span class="btn btn-sm btn-warning edit">修改</span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -729,7 +757,9 @@
                         <div class="form-group">
                             <label for="imageurl" class="col-sm-2 control-label">场馆图片</label>
                             <div class="col-sm-10">
-                                <input type="file" name="imageurl" id="imageurl" placeholder="请输入场馆图片地址">
+                                <input type="file" name="imageurl" id="imageurl" placeholder="请输入场馆图片地址" class="hidden">
+                                <span class="editfilename">{{now_place.imageurl}}</span>
+                                <span class="btn btn-sm btn-warning edit">修改</span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -765,7 +795,9 @@
                         <div class="form-group">
                             <label for="video" class="col-sm-2 control-label">视频</label>
                             <div class="col-sm-10">
-                                <input type="file" name="video" id="video" placeholder="请输入视频地址">
+                                <input type="file" name="video" id="video" placeholder="请输入视频地址" class="hidden">
+                                <span class="editfilename">{{now_place.video}}</span>
+                                <span class="btn btn-sm btn-warning edit">修改</span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -899,7 +931,9 @@
                         <div class="form-group">
                             <label for="imageurl" class="col-sm-2 control-label">培训海报</label>
                             <div class="col-sm-10">
-                                <input type="file" name="imageurl" id="imageurl" placeholder="请输入培训海报地址">
+                                <input type="file" name="imageurl" id="imageurl" placeholder="请输入培训海报地址" class="hidden">
+                                <span class="editfilename">{{now_train.imageurl}}</span>
+                                <span class="btn btn-sm btn-warning edit">修改</span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -935,7 +969,9 @@
                         <div class="form-group">
                             <label for="video" class="col-sm-2 control-label">视频</label>
                             <div class="col-sm-10">
-                                <input type="file" name="video" id="video" placeholder="请输入视频地址">
+                                <input type="file" name="video" id="video" placeholder="请输入视频地址" class="hidden">
+                                <span class="editfilename">{{now_train.video}}</span>
+                                <span class="btn btn-sm btn-warning edit">修改</span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -1141,7 +1177,9 @@
                         <div class="form-group">
                             <label for="flogo" class="col-sm-2 control-label">图标修改</label>
                             <div class="col-sm-10">
-                                <input type="file" name="flogo">
+                                <input type="file" name="flogo" class="hidden">
+                                <span class="editfilename">{{friend.flink}}</span>
+                                <span class="btn btn-sm btn-warning edit">修改</span>
                             </div>
                         </div>
                         <div class="form-group">

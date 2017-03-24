@@ -96,6 +96,7 @@ module.exports = function (app) {
         upload.fields([
             {name: "logo", maxCount: 1}, 
             {name: "aboutusImg", maxCount: 1}, 
+            {name: "locationImg", maxCount: 1}, 
             {name: "wechat", maxCount: 1},
             {name: "flogo", maxCount: 10}
         ]), 

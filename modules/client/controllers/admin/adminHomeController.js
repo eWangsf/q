@@ -48,6 +48,11 @@ function ($scope, $rootScope, dataManager) {
             }
         }
     });
+    $("form .edit").click(function () {
+        $(this).siblings(":file").removeClass("hidden");
+        $(this).siblings(".editfilename").addClass("hidden");
+        $(this).addClass("hidden");
+    })
     document.getElementById('resultIframe').onload = function () {
         var html = document.getElementById('resultIframe').contentWindow.document.body.innerText;
         if ((/Error/i).test(html)) {
@@ -55,7 +60,7 @@ function ($scope, $rootScope, dataManager) {
         }
         var json = JSON.parse(html);
         if(json.code == 200) {
-            alert("操作成功，请刷新页面");
+            window.location.href = "/admin";
         } else {
             alert(json.errmsg || "操作失败，请刷新后重试");
         }
